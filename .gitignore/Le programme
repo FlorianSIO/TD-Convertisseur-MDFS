@@ -1,2 +1,32 @@
+a_2=""
 
-dghy
+phrase1 = str(input("Quel chiffre voulez-vous entrez ? Un chiffre binaire ? hexadecimal ? decimal ? "))
+    
+if (phrase1 == "binaire"):
+
+    a = int(input("Quel nombre binaire avez-vous choisi ? "))
+    while(a) != ("0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111"):
+            print ("Ce n'est pas un nombre binaire !")
+            a = int(input("Quel nombre binaire avez-vous choisi ? "))
+            
+    if (a) == ("0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111"):
+            a_10 = print ("En quoi voulez vous convertir ce chiffre binaire ? En hexadecimal ou en decimal ?")
+            if (a_10) == ("decimal"):
+                while (a_10) != (0) : #Tant que a_10 est différent à 0
+                            r = a_10%2 #permet d'avoir le reste de la division
+                            a_2= str(r)+a_2 #permet de concaténer les deux chaines
+                            a_10=a_10//2
+                            print(nombredecimal, "base 10=", a_2, "base 2")
+    
+
+    
+elif (phrase1 == "hexadecimal"):
+    b = str(input("Quel nombre hexadecimal avez-vous choisi ? "))
+
+    
+elif (phrase1 == "decimal"):
+    c = str(input("Quel nombre decimal avez-vous choisi ? "))
+
+    
+else:
+    print ("Vous devez choisir entre : binaire, hexadecimal et decimal !")
