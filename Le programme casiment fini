@@ -1,0 +1,93 @@
+##############################################
+#       Converssion d'un nombre décimal      #
+##############################################
+import os
+print ("Bienvenue dans le convertisseur décimal,binaire,hexadecimal")
+
+choix = int (input("Choisisez une base : 1 -> Décimal / 2 -> Binaire / 3 -> Hexadécimal : "))
+if choix == 1:
+        rentreutilisateur = int(input('Entrez le nombre décimal :'))
+
+        def Binaire(valeur):
+
+                decimal = valeur
+                quotient = decimal // 2
+                binaire =''
+                
+                while quotient != 0 :
+                        quotient = decimal // 2
+                        reste = decimal % 2
+                        binaire = str(reste) + binaire
+                        decimal = quotient
+                print("binaire :", binaire)
+
+        def Hexadecimal(valeur):
+                
+            result=valeur
+            hexadecimal = ''
+            while result != 0:
+                remainder = changeDigit(result % 16)
+                hexadecimal = str(remainder) + hexadecimal
+                result = int(result / 16)
+            print("Valeur hexadecimal :",hexadecimal)
+            
+
+        def changeDigit(digit):
+            decimal =     [10 , 11 , 12 , 13 , 14 , 15 ]
+            hexadecimal = ["A", "B", "C", "D", "E", "F"]
+            for counter in range(7):
+                if digit == decimal[counter - 1]:
+                    digit = hexadecimal[counter - 1]
+            return digit
+
+        Binaire(rentreutilisateur)
+        Hexadecimal(rentreutilisateur)
+        
+##############################################
+#       Converssion d'un nombre binaire      #
+##############################################
+
+if choix == 2:
+        
+        saisieutilisateur = input('Entrez le nombre binaire :')
+
+        def decimal (valeur):
+                binaire = valeur
+                decimal = 0
+                expo = len(binaire) - 1
+
+                for i in range(0,len(binaire)):
+                        if binaire[i] == '1':
+                               decimal += 2**expo
+                        expo -= 1
+                
+                return decimal
+
+        def hexadecimal(valeur):
+
+            result = decimal(valeur)
+            hexadecimal = ""
+            while result != 0:
+                remainder = changeDigit(result % 16)
+                hexadecimal = str(remainder) + hexadecimal
+                result = int(result / 16)
+
+            return hexadecimal
+
+        def changeDigit(digit):
+            decimal =     [10 , 11 , 12 , 13 , 14 , 15 ]
+            hexadecimal = ["A", "B", "C", "D", "E", "F"]
+            for counter in range(7):
+                if digit == decimal[counter - 1]:
+                    digit = hexadecimal[counter - 1]
+            return digit
+
+        resultat_fonction_hexa = hexadecimal(saisieutilisateur)
+        resultat_fonction_deci = decimal(saisieutilisateur)
+        print("Valeur décimale :",resultat_fonction_deci)
+        print("Valeur héxadecimal :",resultat_fonction_hexa) 
+
+
+##############################################
+#    Converssion d'un nombre Hexadécimal     #
+############################################## 
