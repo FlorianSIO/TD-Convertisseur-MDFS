@@ -1,0 +1,97 @@
+#############################################################################################################################################################
+###################################################       Converssion d'un nombre décimal      ##############################################################
+#############################################################################################################################################################
+
+import os # On importe l'os pour l'ouvrire dans l'inviter de commande 
+
+print ("Bienvenue dans le convertisseur décimal,binaire,hexadecimal") #Message de bienvenue
+
+choix = int (input("Choisisez une base : 1 -> Décimal / 2 -> Binaire / 3 -> Hexadécimal : ")) #L'utilisateur choisie
+if choix == 1: # Si L'utilisateur choisie 1 dans le menu
+        rentreutilisateur = int(input('Entrez le nombre décimal :')) #L'utilisateur doit rentrer un nombre en décimal
+
+        def Binaire(valeur): #On créé une fonction
+
+                decimal = valeur # decimal = valeur (valeur = l'entré de l'utilisateur)
+                quotient = decimal // 2 # Quotient = décimal quotient entier (div) 2
+                binaire ='' # Binaire = rien
+                
+                while quotient != 0 : # Tant que quotient n'ets pas égale a 0
+                        quotient = decimal // 2 # Quotient = décimal quotient entier (div) 2
+                        reste = decimal % 2 # reste = décimal reste entier (mod) 2
+                        binaire = str(reste) + binaire # binaire = str(reste) + binaire
+                        decimal = quotient # Décimal = quotient
+                print("binaire :", binaire) # Afficher le nombre convertie en binaire
+
+        def Hexadecimal(valeur): #On créé une fonction
+                
+            result=valeur # result = valeur(valeur = l'entré de l'utilisateur)
+            hexadecimal = '' # Hexadecimal = rien
+            while result != 0: #Tant que result n'est pas égale à 0
+                reste = changeDigit(result % 16) # reste = changeDigit (result reste entier 16)
+                hexadecimal = str(reste) + hexadecimal # hexadecimal = str (reste) + hexadecimal
+                result = int(result / 16) # On rentre dans result -> result divisé par 16
+            print("Valeur hexadecimal :",hexadecimal) #Afficher le nombre convertie en Hexadecimal
+            
+
+        def changeDigit(digit): #On créé une fonction
+            decimal =     [10 , 11 , 12 , 13 , 14 , 15 ] # On fait un tableau ou decimal = [10,11,12,13,14,15]
+            hexadecimal = ["A", "B", "C", "D", "E", "F"] # On fait un tableau ou hexadecimal = ["A", "B", "C", "D", "E", "F"]
+            for compteur in range(7): # Pour compteur dans un range de 7
+                if digit == decimal[compteur - 1]: # Si digit == decimal[compteur - 1]
+                    digit = hexadecimal[compteur - 1] # digit = hexadecimal[compteur - 1]
+            return digit # On retourne digit
+
+        Binaire(rentreutilisateur) #On appelle la fonction 
+        Hexadecimal(rentreutilisateur) #On appelle la fonction 
+        
+#############################################################################################################################################################
+###################################################       Converssion d'un nombre binaire      ##############################################################
+#############################################################################################################################################################
+
+if choix == 2: # Si l'utilisateur choisie 2 dans le menu
+        
+        saisieutilisateur = input('Entrez le nombre binaire :') #L'utilisateur doit rentrer un nombre en binaire
+
+        def decimal (valeur): # On créé une fonction
+                binaire = valeur # binaire = valeur (valeur = l'entré de l'utilisateur)
+                decimal = 0 # décimal = 0
+                expo = len(binaire) - 1 #expo = len (len permet de retourner le nombre d'éléments d'une chaîne de caractères ou d'une liste.)(binaire)-1
+
+                for i in range(0,len(binaire)): #Pour i dans range (range permet de créer une list)(0,len(binaire))
+                        if binaire[i] == '1': # Si binaire [i] == '1'
+                               decimal += 2**expo # décimal égale supérieur a 2**(** = exposant) expo
+                        expo -= 1 # expo égale inférieur à 1
+                
+                return decimal # On retourne decimal 
+
+        def hexadecimal(valeur): # On créé une fonction
+
+            result = decimal(valeur) # result = décimal(valeur)
+            hexadecimal = "" # hexadecimal = rien
+            while result != 0: # Tant que result n'est pas égale à 0    
+                reste = changeDigit(result % 16) # reste = changeDigit (result reste entier 16)
+                hexadecimal = str(reste) + hexadecimal # hexadecimal = str(reste) + hexadecimal
+                result = int(result / 16) # result = entrer (result divisé par 16)
+
+            return hexadecimal # On retourne hexadecimal
+
+        def changeDigit(digit): #On créé une fonction
+            decimal =     [10 , 11 , 12 , 13 , 14 , 15 ] # on créé un tableau avec [10 , 11 , 12 , 13 , 14 , 15 ]"
+            hexadecimal = ["A", "B", "C", "D", "E", "F"] # on créé un tableau avec ["A", "B", "C", "D", "E", "F"]
+            for compteur in range(7): # Pour compteur dans un range de 7
+                if digit == decimal[compteur - 1]: # Si digit == decimal [compteur - 1]
+                    digit = hexadecimal[compteur - 1] # digit = hexadecimal[compteur - 1]
+            return digit # On retourne digit
+
+        resultat_fonction_hexa = hexadecimal(saisieutilisateur) # On appelle la fonction
+        resultat_fonction_deci = decimal(saisieutilisateur) # On appelle la fonction
+        print("Valeur décimale :",resultat_fonction_deci) # On affiche la valeur en décimal
+        print("Valeur héxadecimal :",resultat_fonction_hexa) # On affiche la valeur en héxadecimal
+
+
+#############################################################################################################################################################
+###################################################       Converssion d'un nombre hexadécimal      ##############################################################
+#############################################################################################################################################################
+
+if choix == 3
